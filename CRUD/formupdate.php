@@ -1,0 +1,68 @@
+<?php
+include'koneksi.php';
+$id=$_GET['id'];
+$data= mysqli_query($koneksi,"select * from data_barang where id=$id");
+    while($d= mysqli_fetch_array($data)){
+?>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <title>THOT</title>
+
+    <style> 
+
+  </style> 
+  </head>
+  <body>
+ 
+<div class="container">
+  <h2>UPDATE BARANG GAN </h2>
+  <form class="form-horizontal" action="updatebarang.php" method="POST">
+    <div class="form-group">
+      <label class="col-md-2" for="kode">Kode </label>
+      <div class="col-md-10">
+        <input type="text" class="form-control" id="kode" name="kode" disabled="" value="<?php echo $d['kode']; ?>">
+      </div>
+    </div>
+
+
+<div class="form-group">
+      <label class="col-md-2" for="namabarang">nama barang </label>
+      <div class="col-md-10">
+        <input type="text" class="form-control" id="namabarang" name="namabarang" value="<?php echo $d['namabarang']; ?>">
+      </div>
+    </div>
+
+<div class="form-group">
+      <label class="col-md-2" for="qty">Quantity </label>
+      <div class="col-md-10">
+        <input type="text" class="form-control" id="qty" name="qty">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-2">
+      <button type="submit" class="btn btn-success">Update </button>
+    </div>
+  </div>
+  </form>
+<?php }
+?> 
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.2.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js""></script>
+    <script src="js/angular.min.js"></script>
+  </body>
+</html>
